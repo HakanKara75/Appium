@@ -1,2 +1,4 @@
-package Appium;public class Appium01 {
+package Appium;
+
+public class Appium01 {
 }
