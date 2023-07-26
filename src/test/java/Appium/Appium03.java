@@ -19,13 +19,8 @@ public class Appium03 {
     public void test() throws MalformedURLException {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-//        capabilities.setCapability("platformName", "Android");
-//        capabilities.setCapability(CapabilityType.PLATFORM_NAME, "Android");
-        /*
-        yukaridaki 2 kod da asagidaki kodun gorevini yapar. Herhangi birini yazsak olur.
-         */
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10"); //13 kismi kullanilacak telefondaki Android versionudur.
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10"); //10 kismi kullanilacak telefondaki Android versionudur.
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice");
 //        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice"); IOS'da RealDevice yerine cmd de "adb device" yazinca cikan kodu girecegiz
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
@@ -35,22 +30,29 @@ public class Appium03 {
 
         //alttaki kod, applicasyonu izinler atlayarak ana sayfada acmak icin
         capabilities.setCapability("noReset", true);
-        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        AndroidDriver<MobileElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        System.out.println("app yuklendi");
+
+        //kilitli ekrani acma kodu
+        if(driver.isDeviceLocked()){
+            driver.unlockDevice();
+        }
+        ReusableMethods.bekle(5);
+        WebElement gentureToolText = driver.findElement(By.id("android:id/title"));
+        assertTrue(gentureToolText.isDisplayed());
+
+        WebElement testButton = driver.findElement(By.id("com.davemac327.gesture.tool:id/testButton"));
+        testButton.click();
+        System.out.println("Test Button calisiyor");
 
         ReusableMethods.bekle(2);
-        WebElement addGestureButton= driver.findElement(By.id("com.davemac327.gesture.tool:id/addButton"));
-        addGestureButton.click();
-        WebElement nameBox= driver.findElement(By.id("com.davemac327.gesture.tool:id/gesture_name"));
-        nameBox.sendKeys("Hakan Kara");
+        WebElement testAGesture = driver.findElement(By.id("android:id/title"));
+        assertTrue(testAGesture.isDisplayed());
+        System.out.println("Test A Gesture texti gorunuyor");
 
-        WebElement done=driver.findElement(By.xpath("//android.widget.Button[@text='Done']"));
-        done.click();
-
-        WebElement gestureToolTitle= driver.findElement(By.xpath("//android.widget.TextView[@text='Gesture Tool']"));
-        assertTrue(gestureToolTitle.isDisplayed());
-
+        driver.hideKeyboard(); //klavyeyi saklamak icin
 
         //session kapat
-        driver.quit();
+        driver.closeApp();
     }
 }

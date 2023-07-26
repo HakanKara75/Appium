@@ -22,7 +22,7 @@ public class Appium01 {
         yukaridaki 2 kod da asagidaki kodun gorevini yapar. Herhangi birini yazsak olur.
          */
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10"); //13 kismi kullanilacak telefondaki Android versionudur.
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10"); //10 kismi kullanilacak telefondaki Android versionudur.
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice");
 //        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice"); IOS'da RealDevice yerine cmd de "adb device" yazinca cikan kodu girecegiz
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
