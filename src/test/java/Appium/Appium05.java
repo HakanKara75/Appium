@@ -6,15 +6,15 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import java.net.MalformedURLException;
 import org.testng.annotations.Test;
-import utilities.ReusableMethods;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class Appium04 {
+public class Appium05 {
+
     @Test
     public void test() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -30,39 +30,36 @@ public class Appium04 {
         AndroidDriver<MobileElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         System.out.println("app yuklendi");
 
-        WebElement alti=driver.findElement(By.id("com.google.android.calculator:id/digit_6"));
+        WebElement bir = driver.findElement(By.id("com.google.android.calculator:id/digit_1"));
+        WebElement iki = driver.findElement(By.id("com.google.android.calculator:id/digit_2"));
+        WebElement uc = driver.findElement(By.id("com.google.android.calculator:id/digit_3"));
+        WebElement dort = driver.findElement(By.id("com.google.android.calculator:id/digit_4"));
+        WebElement bes = driver.findElement(By.id("com.google.android.calculator:id/digit_5"));
+        WebElement alti = driver.findElement(By.id("com.google.android.calculator:id/digit_6"));
+        WebElement yedi = driver.findElement(By.id("com.google.android.calculator:id/digit_7"));
+        WebElement sekiz = driver.findElement(By.id("com.google.android.calculator:id/digit_8"));
+        WebElement dokuz = driver.findElement(By.id("com.google.android.calculator:id/digit_9"));
+        WebElement sifir = driver.findElement(By.id("com.google.android.calculator:id/digit_0"));
+
+        WebElement plus = driver.findElementByAccessibilityId("plus");
+        WebElement minus = driver.findElementByAccessibilityId("minus");
+        WebElement multiply = driver.findElementByAccessibilityId("multiply");
+        WebElement divide = driver.findElementByAccessibilityId("divide");
+        WebElement equals = driver.findElementByAccessibilityId("equals");
+
+        //64+71
+
         alti.click();
-        System.out.println("alti rakamina basildi");
-
-        WebElement bes=driver.findElement(By.id("com.google.android.calculator:id/digit_5"));
-        bes.click();
-        System.out.println("bes rakamina basildi");
-
-        WebElement artiButonu=driver.findElement(By.id("com.google.android.calculator:id/op_add"));
-        artiButonu.click();
-        System.out.println("arti butonuna basildi");
-
-        WebElement yedi=driver.findElement(By.id("com.google.android.calculator:id/digit_7"));
+        dort.click();
+        plus.click();
         yedi.click();
-        System.out.println("yedi rakamina basildi");
-
-        WebElement dokuz=driver.findElement(By.id("com.google.android.calculator:id/digit_9"));
-        dokuz.click();
-        System.out.println("dokuz rakamina basildi");
-
-        WebElement esittirButonu=driver.findElement(By.id("com.google.android.calculator:id/eq"));
-        artiButonu.click();
-        System.out.println("esittir butonuna basildi");
-
-        ReusableMethods.bekle(5);
-        WebElement result= driver.findElement(By.id("com.google.android.calculator:id/result_final"));
-        String expectedResult="144";
+        bir.click();
+        equals.click();
+        WebElement result = driver.findElementById("com.google.android.calculator:id/result_final");
+        String expectedResult="135";
         String actualResult=result.getText();
         assertEquals(actualResult, expectedResult);
         System.out.println("sonuc dogrulandi");
-
         driver.closeApp();
-
-
     }
 }
