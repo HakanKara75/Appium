@@ -64,4 +64,35 @@ public class Appium06 {
 
         driver.closeApp();
     }
+    @Test
+    public void test2() throws MalformedURLException {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10"); //10 kismi kullanilacak telefondaki Android versionudur.
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice");
+//        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice"); IOS'da RealDevice yerine cmd de "adb device" yazinca cikan kodu girecegiz
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+        capabilities.setCapability("appPackage","com.android.chrome");
+        capabilities.setCapability("appActivity", "com.google.android.apps.chrome.Main");
+
+        //alttaki kod, applicasyonu izinler atlayarak ana sayfada acmak icin
+        capabilities.setCapability("noReset", true);
+        AndroidDriver<MobileElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
+        System.out.println(driver.getContext() + "driver acildigindaki tur");
+
+        //application'un butun turlerini Set objesine koyduk ve yazdirdik
+        Set <String> butunApplicationTurleri= driver.getContextHandles();
+
+        for (String tur:butunApplicationTurleri){
+            System.out.println("Butun application turleri = " + tur);
+            // if (tur.contains("WEBVIEW_chrome"))
+                if (tur.contains("NATIVE_APP"))
+                driver.context(tur);
+        }
+        System.out.println(driver.getContext() + "driver'in kapanmadan onceki turu");
+
+ReusableMethods.bekle(5);
+        driver.closeApp();
+    }
 }
