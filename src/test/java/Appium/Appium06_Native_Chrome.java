@@ -15,7 +15,7 @@ import java.util.Set;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-public class Appium06 {
+public class Appium06_Native_Chrome {
     @Test
     public void test() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -66,9 +66,11 @@ public class Appium06 {
     }
     @Test
     public void test2() throws MalformedURLException {
+        //Bu test Native testini telefonda yapmak icin
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10"); //10 kismi kullanilacak telefondaki Android versionudur.
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13"); //10 kismi kullanilacak telefondaki Android versionudur.
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice");
 //        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice"); IOS'da RealDevice yerine cmd de "adb device" yazinca cikan kodu girecegiz
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
@@ -86,8 +88,8 @@ public class Appium06 {
 
         for (String tur:butunApplicationTurleri){
             System.out.println("Butun application turleri = " + tur);
-            // if (tur.contains("WEBVIEW_chrome"))
-                if (tur.contains("NATIVE_APP"))
+             if (tur.contains("WEBVIEW_chrome"))
+            //   if (tur.contains("NATIVE_APP"))
                 driver.context(tur);
         }
         System.out.println(driver.getContext() + "driver'in kapanmadan onceki turu");
@@ -95,4 +97,5 @@ public class Appium06 {
 ReusableMethods.bekle(5);
         driver.closeApp();
     }
+
 }
