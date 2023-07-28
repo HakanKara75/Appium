@@ -3,7 +3,6 @@ package Appium;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
@@ -12,9 +11,9 @@ import utilities.ReusableMethods;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
-public class Appium07_UI_Automator {
+public class Appium08 {
     @Test
     public void test() throws MalformedURLException {
 
@@ -33,21 +32,10 @@ public class Appium07_UI_Automator {
         WebElement resourceId=driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/addButton\")");
         resourceId.click();
 
-        /*
-        yukaridaki WebElement resourceId elementinin farkli locate alma yontemi asagida
-         */
-//        WebElement resourceId=driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").index(0)");
-//        resourceId.click();
-
-//        WebElement textButton=driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").text(\"Test\")");
-//        textButton.click();
-
-        //        WebElement textButton=driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").startsWithText(\"Add\")");
-//        textButton.click();
-
         ReusableMethods.bekle(3);
-            String  doneButton=driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(false)").getAttribute("enabled").toString();
-            System.out.println("doneButton durumu = " + doneButton);
+        String  doneButton=driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(false)").getAttribute("enabled").toString();
+
+        assertEquals(doneButton, "false");
 
         driver.closeApp();
     }
