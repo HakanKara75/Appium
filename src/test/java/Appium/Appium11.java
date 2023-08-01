@@ -27,7 +27,7 @@ public class Appium11 extends BaseClass {
         preferenceDependencies.click();
         System.out.println("Preference Dependencies linki tiklandi");
 
-        String isFalse = driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"android:id/checkbox\").checkable(true)").getAttribute("checked");
+        String isFalse = driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"android:id/checkbox\")").getAttribute("checked");
         System.out.println("isFalse = " + isFalse);
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
