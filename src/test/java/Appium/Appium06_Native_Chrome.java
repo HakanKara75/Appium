@@ -81,18 +81,20 @@ public class Appium06_Native_Chrome {
         capabilities.setCapability("noReset", true);
         AndroidDriver<MobileElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
+        driver.get("https://amazon.com.tr");
         System.out.println(driver.getContext() + "driver acildigindaki tur");
 
         //application'un butun turlerini Set objesine koyduk ve yazdirdik
         Set <String> butunApplicationTurleri= driver.getContextHandles();
 
         for (String tur:butunApplicationTurleri){
-            System.out.println("Butun application turleri = " + tur);
+            System.out.println("Butun ap,plication turleri = " + tur);
              if (tur.contains("WEBVIEW_chrome"))
             //   if (tur.contains("NATIVE_APP"))
                 driver.context(tur);
         }
         System.out.println(driver.getContext() + "driver'in kapanmadan onceki turu");
+
 
 ReusableMethods.bekle(5);
         driver.closeApp();
