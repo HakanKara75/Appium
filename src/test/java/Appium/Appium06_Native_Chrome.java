@@ -1,11 +1,14 @@
 package Appium;
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import utilities.ReusableMethods;
 
@@ -74,8 +77,9 @@ public class Appium06_Native_Chrome {
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice");
 //        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "RealDevice"); IOS'da RealDevice yerine cmd de "adb device" yazinca cikan kodu girecegiz
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
-        capabilities.setCapability("appPackage","com.android.chrome");
-        capabilities.setCapability("appActivity", "com.google.android.apps.chrome.Main");
+     capabilities.setCapability("chromedriverExecutable", "C:\\Users\\HakanBatirhan\\IdeaProjects\\Appium_Lesson\\src\\Apps\\chromedriver.exe");
+     capabilities.setCapability("appium:disableIdLocatorAutocompletion", true);
+       capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 
         //alttaki kod, applicasyonu izinler atlayarak ana sayfada acmak icin
         capabilities.setCapability("noReset", true);
@@ -88,12 +92,21 @@ public class Appium06_Native_Chrome {
         Set <String> butunApplicationTurleri= driver.getContextHandles();
 
         for (String tur:butunApplicationTurleri){
-            System.out.println("Butun ap,plication turleri = " + tur);
-             if (tur.contains("WEBVIEW_chrome"))
+            System.out.println("Butun application turleri = " + tur);
+            //     if (tur.contains("WEBWEIEV_chrome"))
             //   if (tur.contains("NATIVE_APP"))
+           if (tur.contains("CHROMIUM"))
                 driver.context(tur);
         }
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement searchBox= wait.until(ExpectedConditions.visibilityOfElementLocated(new MobileBy.ByAccessibilityId("Arama anahtar kelimelerini silin")));
+        searchBox.sendKeys("Bisiklet");
+        searchBox.click();
+
+
         System.out.println(driver.getContext() + "driver'in kapanmadan onceki turu");
+
 
 
 ReusableMethods.bekle(5);
