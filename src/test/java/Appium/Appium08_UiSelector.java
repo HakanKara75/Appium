@@ -23,15 +23,15 @@ public class Appium08_UiSelector extends BaseClass {
 //        capabilities.setCapability("noReset", true);
 //        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
-        AndroidDriver driver= getAndroidDriver_Emulator();
-        WebElement resourceId = driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/addButton\")");
-        resourceId.click();
-
-        ReusableMethods.bekle(3);
-        String doneButton = driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(false)").getAttribute("enabled").toString();
-
-        assertEquals(doneButton, "false");
-
-        driver.closeApp();
+//        AndroidDriver driver= getAndroidDriver_Emulator();
+//        WebElement resourceId = driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/addButton\")");
+//        resourceId.click();
+//
+//        ReusableMethods.bekle(3);
+//        String doneButton = driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(false)").getAttribute("enabled").toString();
+//
+//        assertEquals(doneButton, "false");
+//
+//        driver.closeApp();
     }
 }

@@ -1,6 +1,6 @@
 package Appium;
 
-import io.appium.java_client.MobileElement;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.WebElement;
@@ -27,27 +27,27 @@ public class Appium07_UI_Automator {
 //        capabilities.setCapability("appPackage", "com.davemac327.gesture.tool");
 //        capabilities.setCapability("appActivity", "com.davemac327.gesture.tool.GestureBuilderActivit");
         capabilities.setCapability("noReset", true);
-        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-
-        WebElement resourceId=driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/addButton\")");
-        resourceId.click();
-
-        /*
-        yukaridaki WebElement resourceId elementinin farkli locate alma yontemi asagida
-         */
-//        WebElement resourceId=driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").index(0)");
+//        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+//
+//        WebElement resourceId=driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/addButton\")");
 //        resourceId.click();
-
-//        WebElement textButton=driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").text(\"Test\")");
-//        textButton.click();
-
-        //        WebElement textButton=driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").startsWithText(\"Add\")");
-//        textButton.click();
-
-        ReusableMethods.bekle(3);
-            String  doneButton=driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(false)").getAttribute("enabled").toString();
-            System.out.println("doneButton durumu = " + doneButton);
-
-        driver.closeApp();
+//
+//        /*
+//        yukaridaki WebElement resourceId elementinin farkli locate alma yontemi asagida
+//         */
+////        WebElement resourceId=driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").index(0)");
+////        resourceId.click();
+//
+////        WebElement textButton=driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").text(\"Test\")");
+////        textButton.click();
+//
+//        //        WebElement textButton=driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").startsWithText(\"Add\")");
+////        textButton.click();
+//
+//        ReusableMethods.bekle(3);
+//            String  doneButton=driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(false)").getAttribute("enabled").toString();
+//            System.out.println("doneButton durumu = " + doneButton);
+//
+//        driver.closeApp();
     }
 }

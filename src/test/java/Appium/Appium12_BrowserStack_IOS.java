@@ -1,16 +1,17 @@
 package Appium;
 
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+
 public class Appium12_BrowserStack_IOS {
 
     @Test
@@ -37,19 +38,19 @@ public class Appium12_BrowserStack_IOS {
 
         // Initialise the remote Webdriver using BrowserStack remote URL
         // and desired capabilities defined above
-        IOSDriver<IOSElement> driver = new IOSDriver<IOSElement>(
+        IOSDriver driver = new IOSDriver(
                 new URL("http://hub-cloud.browserstack.com/wd/hub"), caps);
 
         // Test case for the BrowserStack sample iOS app.
         // If you have uploaded your app, update the test case here.
-        IOSElement textButton = (IOSElement) new WebDriverWait(driver, 30).until(
+        WebElement textButton = new WebDriverWait(driver, 10).until(
                 ExpectedConditions.elementToBeClickable(MobileBy.AccessibilityId("Text Button")));
         textButton.click();
-        IOSElement textInput = (IOSElement) new WebDriverWait(driver, 30).until(
+        WebElement textInput =  new WebDriverWait(driver, 10).until(
                 ExpectedConditions.elementToBeClickable(MobileBy.AccessibilityId("Text Input")));
         textInput.sendKeys("hello@browserstack.com");
         Thread.sleep(5000);
-        IOSElement textOutput = (IOSElement) new WebDriverWait(driver, 30).until(
+        WebElement textOutput = new WebDriverWait(driver, 10).until(
                 ExpectedConditions.elementToBeClickable(MobileBy.AccessibilityId("Text Input")));
         if(textOutput != null && textOutput.getText().equals("hello@browserstack.com"))
             assert(true);
