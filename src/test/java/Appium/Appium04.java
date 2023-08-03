@@ -1,5 +1,6 @@
 package Appium;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.By;
@@ -26,41 +27,41 @@ public class Appium04 {
 
         //alttaki kod, applicasyonu izinler atlayarak ana sayfada acmak icin
         capabilities.setCapability("noReset", true);
-        //AndroidDriver<MobileElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        AndroidDriver<MobileElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         System.out.println("app yuklendi");
 
-//        WebElement alti=driver.findElement(By.id("com.google.android.calculator:id/digit_6"));
-//        alti.click();
-//        System.out.println("alti rakamina basildi");
-//
-//        WebElement bes=driver.findElement(By.id("com.google.android.calculator:id/digit_5"));
-//        bes.click();
-//        System.out.println("bes rakamina basildi");
-//
-//        WebElement artiButonu=driver.findElement(By.id("com.google.android.calculator:id/op_add"));
-//        artiButonu.click();
-//        System.out.println("arti butonuna basildi");
-//
-//        WebElement yedi=driver.findElement(By.id("com.google.android.calculator:id/digit_7"));
-//        yedi.click();
-//        System.out.println("yedi rakamina basildi");
-//
-//        WebElement dokuz=driver.findElement(By.id("com.google.android.calculator:id/digit_9"));
-//        dokuz.click();
-//        System.out.println("dokuz rakamina basildi");
-//
-//        WebElement esittirButonu=driver.findElement(By.id("com.google.android.calculator:id/eq"));
-//        artiButonu.click();
-//        System.out.println("esittir butonuna basildi");
-//
-//        ReusableMethods.bekle(5);
-//        WebElement result= driver.findElement(By.id("com.google.android.calculator:id/result_final"));
-//        String expectedResult="144";
-//        String actualResult=result.getText();
-//        assertEquals(actualResult, expectedResult);
-//        System.out.println("sonuc dogrulandi");
-//
-//        driver.closeApp();
+        WebElement alti=driver.findElement(By.id("com.google.android.calculator:id/digit_6"));
+        alti.click();
+        System.out.println("alti rakamina basildi");
+
+        WebElement bes=driver.findElement(By.id("com.google.android.calculator:id/digit_5"));
+        bes.click();
+        System.out.println("bes rakamina basildi");
+
+        WebElement artiButonu=driver.findElement(By.id("com.google.android.calculator:id/op_add"));
+        artiButonu.click();
+        System.out.println("arti butonuna basildi");
+
+        WebElement yedi=driver.findElement(By.id("com.google.android.calculator:id/digit_7"));
+        yedi.click();
+        System.out.println("yedi rakamina basildi");
+
+        WebElement dokuz=driver.findElement(By.id("com.google.android.calculator:id/digit_9"));
+        dokuz.click();
+        System.out.println("dokuz rakamina basildi");
+
+        WebElement esittirButonu=driver.findElement(By.id("com.google.android.calculator:id/eq"));
+        artiButonu.click();
+        System.out.println("esittir butonuna basildi");
+
+        ReusableMethods.bekle(5);
+        WebElement result= driver.findElement(By.id("com.google.android.calculator:id/result_final"));
+        String expectedResult="144";
+        String actualResult=result.getText();
+        assertEquals(actualResult, expectedResult);
+        System.out.println("sonuc dogrulandi");
+
+        driver.closeApp();
 
 
     }

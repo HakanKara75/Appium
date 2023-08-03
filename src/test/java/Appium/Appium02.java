@@ -1,6 +1,7 @@
 package Appium;
 
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.By;
@@ -35,27 +36,27 @@ public class Appium02 {
         capabilities.setCapability(MobileCapabilityType.APP, "/Users/HakanBatirhan/IdeaProjects/Appium_Lesson/src/Apps/Gesture_Tool_1.3_Apkpure.apk");
         capabilities.setCapability("appPackage", "com.davemac327.gesture.tool");
         capabilities.setCapability("appActivity", "com.davemac327.gesture.tool.GestureBuilderActivity");
-//        AndroidDriver<MobileElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-//
-//        WebDriverWait wait = new WebDriverWait(driver, 10);
-//        WebElement addGestureButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.davemac327.gesture.tool:id/addButton")));
-//        addGestureButton.click();
-//
-//        ReusableMethods.bekle(3);
-//        WebElement nameBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.davemac327.gesture.tool:id/gesture_name")));
-//        nameBox.sendKeys("Gunaydin Herkese");
-//
-//        ReusableMethods.bekle(3);
-//        WebElement blackScreen = driver.findElement(By.id("com.davemac327.gesture.tool:id/gestures_overlay"));
-//        blackScreen.click();
-//
-//        ReusableMethods.bekle(3);
-//        WebElement done = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Button[@text='Done']")));
-//        done.click();
-//
-//        ReusableMethods.bekle(3);
-//        WebElement gestureToolTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.TextView[@text='Gesture Tool']")));
-//        assertTrue(gestureToolTitle.isDisplayed());
+       AndroidDriver<MobileElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
+       WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement addGestureButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.davemac327.gesture.tool:id/addButton")));
+        addGestureButton.click();
+
+        ReusableMethods.bekle(3);
+        WebElement nameBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.davemac327.gesture.tool:id/gesture_name")));
+        nameBox.sendKeys("Gunaydin Herkese");
+
+        ReusableMethods.bekle(3);
+        WebElement blackScreen = driver.findElement(By.id("com.davemac327.gesture.tool:id/gestures_overlay"));
+        blackScreen.click();
+
+        ReusableMethods.bekle(3);
+        WebElement done = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Button[@text='Done']")));
+        done.click();
+
+        ReusableMethods.bekle(3);
+        WebElement gestureToolTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.TextView[@text='Gesture Tool']")));
+        assertTrue(gestureToolTitle.isDisplayed());
 
 
     }

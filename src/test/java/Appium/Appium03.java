@@ -58,6 +58,6 @@ public class Appium03 {
         driver.hideKeyboard(); //klavyeyi saklamak icin
 
         //session kapat
-       // driver.closeApp();
+        driver.closeApp();
     }
 }
