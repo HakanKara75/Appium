@@ -21,6 +21,8 @@ import java.sql.Driver;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
+import static utilities.ReusableMethods.tumSayfaScreenShoot;
+import static utilities.ReusableMethods.webElementScreenShoot;
 
 public class HepsiBurada {
 
@@ -73,6 +75,9 @@ public class HepsiBurada {
         search.sendKeys("karaca");
 
         WebElement searchText= wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.pozitron.hepsiburada:id/etSearchBox")));
+
+        tumSayfaScreenShoot(driver);
+        webElementScreenShoot(searchText);
 
         assertTrue(  searchText.getText().contains("karaca"));
 

@@ -1,6 +1,8 @@
 package utilities;
 
 import static org.testng.AssertJUnit.*;
+
+import io.appium.java_client.android.AndroidDriver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -39,5 +41,34 @@ import java.util.List;
             }
         }
 
+        /**
+         *       Tüm Sayfa ScreenShot
+         */
+
+        public static void tumSayfaScreenShoot(AndroidDriver driver){
+            String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+            String dosyaYolu = "TestOutput/screenshot"+tarih+".png";
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            try {
+                FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        /**
+         *   WebElement ScreenShot
+         *   @param element screenshot'i alinacak elementin locatidir
+         */
+
+        public static void webElementScreenShoot(WebElement element){
+            String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+            String dosyaYolu = "TestOutput/webElementScreenshot"+tarih+".png";
+            try {
+                FileUtils.copyFile(element.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
 }
