@@ -59,6 +59,11 @@ public class HepsiBurada {
         desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME ,"RealDevice");
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION ,"13");
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME ,"UiAutomator2");
+
+        /*
+        yukaridaki testten farkli olarak apk yolu verilmeden desiredCapabilities olusturuldu.
+        apk yolu yerine burada APP_ACTIVITY ve APP_PACKAGE eklendi.
+         */
         desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,"com.hepsiburada.ui.startup.SplashActivity");
         desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE,"com.pozitron.hepsiburada");
         desiredCapabilities.setCapability("noReset", true);
@@ -67,9 +72,6 @@ public class HepsiBurada {
         AndroidDriver<AndroidElement> driver= new AndroidDriver(new URL("http://localhost:4723"), desiredCapabilities);
 
         WebDriverWait wait = new WebDriverWait(driver, 20);
-
-//        WebElement allow= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Button[@text='Allow")));
-//        allow.click();
 
         WebElement search= wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.pozitron.hepsiburada:id/etSearchBox")));
         search.sendKeys("karaca");
