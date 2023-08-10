@@ -12,11 +12,15 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import utilities.ReusableMethods;
 
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Driver;
+
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class HepsiBurada {
 
@@ -34,11 +38,16 @@ public class HepsiBurada {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
-        WebElement allow= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Button[@text='Allow")));
-        allow.click();
+//        WebElement allow= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Button[@text='Allow")));
+//        allow.click();
 
         WebElement search= wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.pozitron.hepsiburada:id/etSearchBox")));
         search.sendKeys("karaca");
+
+        WebElement searchText= wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.pozitron.hepsiburada:id/etSearchBox")));
+        System.out.println("searchText.getText() = " + searchText.getText());
+
+        assertTrue(  searchText.getText().contains("karaca"));
     }
 
     @Test
@@ -50,6 +59,7 @@ public class HepsiBurada {
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME ,"UiAutomator2");
         desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,"com.hepsiburada.ui.startup.SplashActivity");
         desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE,"com.pozitron.hepsiburada");
+        desiredCapabilities.setCapability("noReset", true);
 
         //appium url'ine baglanma
         AndroidDriver<AndroidElement> driver= new AndroidDriver(new URL("http://localhost:4723"), desiredCapabilities);
@@ -61,5 +71,10 @@ public class HepsiBurada {
 
         WebElement search= wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.pozitron.hepsiburada:id/etSearchBox")));
         search.sendKeys("karaca");
+
+        WebElement searchText= wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.pozitron.hepsiburada:id/etSearchBox")));
+
+        assertTrue(  searchText.getText().contains("karaca"));
+
     }
 }
